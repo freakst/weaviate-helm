@@ -11,4 +11,23 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+{{ if index .Values "modules" "img2vec-neural" "external"  "enabled"}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ index .Values "modules" "img2vec-neural" "fullnameOverride" }}-ext
+spec:
+  type: LoadBalancer
+{{- if .Values.modules.img2vec-neural.external.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.modules.img2vec-neural.external.loadBalancerIP }}
+{{- end }}
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: {{ index .Values "modules" "img2vec-neural" "fullnameOverride" }}
+{{- end }}
+
 {{ end }}

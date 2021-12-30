@@ -243,6 +243,10 @@ modules:
     registry: docker.io
     replicas: 1
     fullnameOverride: img2vec-neural
+    external:
+      enabled: true
+      # loadBalancerIP: 1.2.3.4
+
     envconfig:
       # enable for CUDA support. Your K8s cluster needs to be configured
       # accordingly and you need to explicitly set GPU requests & limits below

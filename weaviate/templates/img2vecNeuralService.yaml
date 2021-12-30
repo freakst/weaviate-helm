@@ -21,8 +21,8 @@ metadata:
   name: {{ index .Values "modules" "img2vec-neural" "fullnameOverride" }}-ext
 spec:
   type: LoadBalancer
-  {{- if .Values.modules.img2vec-neural.external.loadBalancerIP }}
-  loadBalancerIP: {{ .Values.modules.img2vec-neural.external.loadBalancerIP }}
+  {{- if index .Values "modules" "img2vec-neural" "external" "loadBalancerIP" }}
+  loadBalancerIP: {{ index .Values "modules" "img2vec-neural" "external" "loadBalancerIP" }}
   {{- end }}
   selector:
     app: {{ index .Values "modules" "img2vec-neural" "fullnameOverride" }}

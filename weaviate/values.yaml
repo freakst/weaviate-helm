@@ -22,6 +22,11 @@ resources:
     cpu: '1000m'
     memory: '1Gi'
 
+weaviate_root:
+  enabled: false
+
+
+
 # The Persistent Volume Claim settings for Weaviate. If there's a
 # storage.fullnameOverride field set, then the default pvc will not be
 # created, instead the one defined in fullnameOverride will be used

@@ -178,6 +178,9 @@ modules:
     registry: docker.io
     replicas: 1
     fullnameOverride: clip-inference
+    external:
+      enabled: false
+      # loadBalancerIP: 1.2.3.4
     envconfig:
       # enable for CUDA support. Your K8s cluster needs to be configured
       # accordingly and you need to explicitly set GPU requests & limits below
@@ -212,6 +215,9 @@ modules:
     registry: docker.io
     replicas: 1
     fullnameOverride: qna-transformers
+    external:
+      enabled: false
+      # loadBalancerIP: 1.2.3.4
     envconfig:
       # enable for CUDA support. Your K8s cluster needs to be configured
       # accordingly and you need to explicitly set GPU requests & limits below
@@ -284,6 +290,9 @@ modules:
     registry: docker.io
     replicas: 1
     fullnameOverride: text-spellcheck
+    external:
+      enabled: false
+      # loadBalancerIP: 1.2.3.4
     envconfig:
       # enable for CUDA support. Your K8s cluster needs to be configured
       # accordingly and you need to explicitly set GPU requests & limits below
@@ -318,6 +327,9 @@ modules:
     registry: docker.io
     replicas: 1
     fullnameOverride: ner-transformers
+    external:
+      enabled: false
+      # loadBalancerIP: 1.2.3.4
     envconfig:
       # enable for CUDA support. Your K8s cluster needs to be configured
       # accordingly and you need to explicitly set GPU requests & limits below

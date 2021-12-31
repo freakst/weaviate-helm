@@ -11,4 +11,23 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
+{{ if index .Values "modules" "qna-transformers" "external" "enabled" }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ index .Values "modules" "qna-transformers" "fullnameOverride" }}-ext
+spec:
+  type: LoadBalancer
+  {{- if index .Values "modules" "qna-transformers" "external" "loadBalancerIP" }}
+  loadBalancerIP: {{ index .Values "modules" "qna-transformers" "external" "loadBalancerIP" }}
+  {{- end }}
+  selector:
+    app: {{ index .Values "modules" "qna-transformers" "fullnameOverride" }}
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+{{- end }}
 {{ end }}

@@ -146,6 +146,11 @@ spec:
         - name: weaviate-config
           configMap:
             {{ if .Values.custom_config_map.enabled }}name: {{ .Values.custom_config_map.name }} {{ else }}name: weaviate-config{{ end }}
+        {{- if .Values.storage.existingClaim }}
+        - name: weaviate-data
+          persistentVolumeClaim:
+            claimName: {{ tpl .Values.storage.existingClaim $ }}
+        {{- end }}
         # - name: weaviate-persistence-data-vol
         #   persistentVolumeClaim:
         #     {{ if empty .Values.storage.fullnameOverride }}
@@ -166,6 +171,7 @@ spec:
         {{ toYaml . | nindent 8 }}
       {{- end }}
 
+  {{- if not .Values.storage.existingClaim }}
   volumeClaimTemplates:
   - metadata:
       name: weaviate-data
@@ -175,4 +181,7 @@ spec:
       resources:
         requests:
           storage: {{ .Values.storage.size }}
+  {{- end }}
+
+
 {{ end }}

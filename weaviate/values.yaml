@@ -55,6 +55,7 @@ weaviate_root:
 storage:
   size: 32Gi
   storageClassName: premium-rwo
+  # esixtingClaim: your-claim-name
 
 # The service controls how weaviate is exposed to the outside world. If you
 # don't want a public load balancer, you can also choose 'ClusterIP' to make
@@ -115,6 +116,7 @@ debug: false
 env:
   # The aggressiveness of the Go Garbage Collector. 100 is the default value.
   GOGC: 100
+  LOG_LEVEL: 'debug'
 
 envSecrets:
 

@@ -105,7 +105,7 @@ spec:
           - name: CLUSTER_DATA_BIND_PORT
             value: "7001"
           - name: CLUSTER_JOIN
-            value: {{ .Values.service.name }}-headless.{{ .Release.Namespace }}.svc.cluster.local
+            value: complete-nonsense-service.inexisting.svc.cluster9999991923123.xyz
         ports:
           - containerPort: 8080
         volumeMounts:

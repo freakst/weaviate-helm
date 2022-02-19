@@ -7,7 +7,7 @@ metadata:
     {{- include "weaviate.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicas }}
-  serviceName: {{ .Values.service.name }}
+  serviceName: {{ include "weaviate.fullname" . }}
   selector:
     matchLabels:
   template:

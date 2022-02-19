@@ -2,20 +2,18 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: weaviate
+  name: {{ include "weaviate.fullname" . }}
   labels:
-    name: weaviate
-    app: weaviate
+    {{- include "weaviate.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicas }}
   serviceName: {{ .Values.service.name }}
   selector:
     matchLabels:
-      app: weaviate
   template:
     metadata:
       labels:
-        app: weaviate
+        {{- include "weaviate.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 60
       containers:
